@@ -1,0 +1,15 @@
+bin
+build
+config.log
+config.status
+config/config
+config/system.mak
+include/flite_version.h
+lib
+main/flite_voice_list.c
+windows/build
+*.ncb
+*.o
+*.obj
+*.suo
+*.vcproj.*.user
