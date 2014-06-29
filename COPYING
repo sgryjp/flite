@@ -212,6 +212,11 @@ palm/include/fdlibm.h
  * is preserved.
  * ====================================================
 
+Some source files were mofidied by Suguru Yamamoto. The modification are
+published under public domain so that each files can be distributed under
+the same license terms. Files modified by Suguru Yamamoto are:
 
+- src/cg/cst_mlsa.c
+- src/cg/cst_vc.h
 
 

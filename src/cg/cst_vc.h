@@ -70,6 +70,7 @@ typedef struct DMATRIX_STRUCT {
 #define FABS(x) ((x) >= 0.0 ? (x) : -(x))
 #define LABS(x) ((x) >= 0 ? (x) : -(x))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 #define xdvnull() xdvalloc(0)
 

@@ -72,6 +72,7 @@
 #include "cst_vc.h"
 #include "cst_cg.h"
 #include "cst_mlsa.h"
+#include <limits.h>
 
 
 static cst_wave *synthesis_body(const cst_track *params, 
@@ -361,7 +362,8 @@ static void vocoder(double p, double *mc,
 
 	x = mlsadf(x, vs->c, m, cg_db->mlsa_alpha, vs->pd, vs->d1, vs);
 
-        wav->samples[*pos] = (short)x;
+	wav->samples[*pos] = (0 < x) ? (short)MIN(SHRT_MAX, x)
+				     : (short)MAX(SHRT_MIN, x);
 	*pos += 1;
 
 	if (!--i) {
