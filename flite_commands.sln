@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flite_cmu_us_slt_exe", "windows\flite_cmu_us_slt_exe.vcproj", "{841ADA9D-6409-4DDA-B0DE-94EF99EC8C60}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flite_exe", "windows\flite_exe.vcproj", "{4241F2E6-E49D-43FE-A585-B9A3A972CB9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{841ADA9D-6409-4DDA-B0DE-94EF99EC8C60}.Debug|Win32.ActiveCfg = Debug|Win32
+		{841ADA9D-6409-4DDA-B0DE-94EF99EC8C60}.Debug|Win32.Build.0 = Debug|Win32
+		{841ADA9D-6409-4DDA-B0DE-94EF99EC8C60}.Release|Win32.ActiveCfg = Release|Win32
+		{841ADA9D-6409-4DDA-B0DE-94EF99EC8C60}.Release|Win32.Build.0 = Release|Win32
+		{4241F2E6-E49D-43FE-A585-B9A3A972CB9C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4241F2E6-E49D-43FE-A585-B9A3A972CB9C}.Debug|Win32.Build.0 = Debug|Win32
+		{4241F2E6-E49D-43FE-A585-B9A3A972CB9C}.Release|Win32.ActiveCfg = Release|Win32
+		{4241F2E6-E49D-43FE-A585-B9A3A972CB9C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -40,13 +40,19 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <sys/time.h>
-#include <unistd.h>
+#ifndef _WIN32
+#   include <sys/time.h>
+#   include <unistd.h>
+#else
+#   include <windows.h>
+#   define FILETIME_EPOCH 116444736000000000i64 /* 369 years + 89 leap days */
+#endif
 
 #include "flite.h"
 #include "flite_version.h"
 
 cst_val *flite_set_voice_list(void);
+static int my_gettimeofday(struct timeval *tp, void *tzp);
 
 void cst_alloc_debug_summary();
 
@@ -323,7 +329,7 @@ int main(int argc, char **argv)
     }
 
 loop:
-    gettimeofday(&tv,NULL);
+    my_gettimeofday(&tv,NULL);
     time_start = (double)(tv.tv_sec)+(((double)tv.tv_usec)/1000000.0);
 
     if (explicit_phones)
@@ -335,7 +341,7 @@ loop:
     else
 	durs = flite_file_to_speech(filename,v,outtype);
 
-    gettimeofday(&tv,NULL);
+    my_gettimeofday(&tv,NULL);
     time_end = ((double)(tv.tv_sec))+((double)tv.tv_usec/1000000.0);
 
     if (flite_verbose || (flite_bench && bench_iter == ITER_MAX))
@@ -352,4 +358,24 @@ loop:
     /*    cst_alloc_debug_summary(); */
 
     return 0;
+}
+
+static int my_gettimeofday(struct timeval *tp, void *tzp)
+{
+#ifndef _WIN32
+    return gettimeofday(tp, tzp);
+#else
+    FILETIME ft;
+    ULARGE_INTEGER tmp;
+    __int64 timestamp;
+
+    GetSystemTimeAsFileTime(&ft);
+    tmp.HighPart = ft.dwHighDateTime;
+    tmp.LowPart = ft.dwLowDateTime;
+    timestamp = (tmp.QuadPart - FILETIME_EPOCH) / 10; /* in microsecond */
+    tp->tv_sec = (long)(timestamp / 1000000);
+    tp->tv_usec = (long)(timestamp % 1000000);
+
+    return 0;
+#endif
 }
